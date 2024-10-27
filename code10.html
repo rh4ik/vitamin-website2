@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Витамины и Здоровый Образ Жизни</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #1f1f1f;
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #333;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        nav a {
+            color: #e0e0e0;
+            margin: 0 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffab40;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .vitamin-section {
+            margin-bottom: 3rem;
+        }
+
+        .vitamin-section h2 {
+            color: #66bb6a;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .tabs button {
+            background: #333;
+            border: none;
+            color: #e0e0e0;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            margin: 0.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .tabs button:hover {
+            background: #555;
+            transform: scale(1.05);
+        }
+
+        .content {
+            display: none;
+            padding: 1.5rem;
+            background: #2e2e2e;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        h3 {
+            color: #ffab40;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #1f1f1f;
+            color: #ffffff;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #333;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .container section {
+            margin-bottom: 2rem;
+        }
+
+        .container p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+<style>
+        /* Гамбургер меню */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #e0e0e0;
+            margin: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                position: relative;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                top: 1rem;
+                right: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #333;
+                position: absolute;
+                top: 3rem;
+                right: 1rem;
+                width: 200px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid #444;
+                color: #e0e0e0;
+                text-align: left;
+            }
+
+            .nav-links a:hover {
+                background: #444;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+<style>
+        /* Анимации при прокрутке */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Витамины и Здоровый Образ Жизни</h1>
+        <p>Узнайте, как поддерживать свой иммунитет и здоровье с помощью витаминов и правильного питания</p>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+    <nav>
+        <div class="nav-links">
+            <a href="#vitamins">Витамины</a>
+            <a href="#nutrition">Правильное Питание</a>
+            <a href="#routine">Распорядок Дня</a>
+            <a href="#recommendations">Рекомендации</a>
+            <a href="#water-intake-calculator">Калькулятор Воды</a>
+        </div>
+    </nav>
+
+    <div class="container fade-in" id="vitamins">
+        <section class="vitamin-section">
+            <h2>Витамины и их роль</h2>
+            <div class="tabs">
+                <button onclick="showContent('vitamin-a')">Витамин A</button>
+                <button onclick="showContent('vitamin-c')">Витамин C</button>
+                <button onclick="showContent('vitamin-d')">Витамин D</button>
+                <button onclick="showContent('vitamin-b')">Витамины группы B</button>
+                <button onclick="showContent('microelements')">Микроэлементы</button></div>
+
+            <div id="vitamin-a" class="content">
+                <h3>Витамин A</h3>
+                <p>Витамин A способствует укреплению зрения и иммунитета. Он содержится в таких продуктах, как морковь, 
+                    тыква, печень трески и брокколи.</p>
+            </div>
+
+            <div id="vitamin-c" class="content">
+                <h3>Витамин C</h3>
+                <p>Витамин C укрепляет иммунную систему и помогает организму бороться с инфекциями. Основные источники — 
+                    цитрусовые, киви, болгарский перец и клубника.</p>
+            </div>
+
+            <div id="vitamin-d" class="content">
+                <h3>Витамин D</h3>
+                <p>Витамин D важен для здоровья костей и помогает поддерживать иммунитет. Он содержится в жирной рыбе, 
+                    молочных продуктах и синтезируется кожей под воздействием солнца.</p>
+            </div>
+
+            <div id="vitamin-b" class="content">
+                <h3>Витамин B</h3>
+                <p>Витамины группы B способствуют повышению энергии, укреплению нервной системы и улучшению метаболизма. 
+                    Их можно найти в мясе, зерновых продуктах, яйцах и орехах.</p>
+            </div>
+
+           <div id="microelements" class="content">
+                <h3>Микроэлементы</h3>
+                <p>Микроэлементы играют ключевую роль в поддержании здоровья организма. Вот основные микроэлементы и их функции:</p>
+                <ul>
+                    <li><strong>Железо</strong>: Моллюски, говяжья печень, яйца, гранаты, чечевица, фасоль — важны для профилактики анемии и улучшения обмена веществ.</li>
+                    <li><strong>Кальций</strong>: Молочные продукты, шпинат, соя, капуста — укрепляют кости, зубы и сосуды.</li>
+                    <li><strong>Калий</strong>: Бобовые, шпинат, лосось, сухофрукты, орехи — помогают поддерживать здоровье сердечно-сосудистой системы и улучшают обмен веществ.</li>
+                    <li><strong>Фосфор</strong>: Морепродукты, рыба, миндаль, молочные продукты, яйца — способствуют росту костной ткани и поддерживают метаболизм.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div class="container" id="nutrition">
+        <section>
+            <h2>Правильное Питание</h2>
+            <div class="tabs">
+                <button onclick="showContent('weekly-menu')">Подготовка Недельного Меню</button>
+                <button onclick="showContent('vitamin-combinations')">Рекомендации по Комбинациям Витаминов</button>
+                <button onclick="showContent('weekly-plan')">План Питания на Неделю</button>
+            </div>
+
+            <div id="weekly-menu" class="content">
+                <h3>Подготовка Недельного Меню</h3>
+                <p>Приправы и специи помогают придать разнообразие вкусов вашим блюдам без необходимости добавления лишнего сахара, соли или жиров. Экспериментируйте с разными видами приправ и специй, такими как куркума, имбирь, орегано, базилик, куркума, кориандр и многие другие, чтобы придать вашим блюдам новые вкусы и ароматы.</p>
+                <p>Включайте овощи и зелень в каждый прием пищи. Они являются отличным источником витаминов, минералов, антиоксидантов и клетчатки, необходимых для поддержания здоровья и иммунной системы.</p>
+                <p>Сосредоточьтесь на осознанном питании, обращая внимание на сигналы голода и насыщения вашего организма. Попробуйте уменьшить скорость приема пищи, полностью сконцентрировавшись на еде и наслаждаясь ею, что поможет вам избежать переедания и поддерживать здоровый вес.</p>
+                <p>Пейте достаточное количество воды в течение дня, так как это важно для общего здоровья и усвоения питательных веществ. Старайтесь пить не менее 8 стаканов воды в день и увеличивайте количество при повышенной физической активности или в жаркую погоду.</p>
+                <p>Старательно ограничивайте потребление обработанных продуктов, таких как фаст-фуд, консервированные банки, упакованные соки и сладости, которые могут быть бедны витаминами и белками, но богаты добавленным сахаром, солью и насыщенными жирами. Предпочтение отдавайте свежим, натуральным продуктам.</p>
+                <p>Постепенно внедряйте здоровые кулинарные привычки, такие как приготовление блюд на пару, запекание в духовке, готовка на гриле или использование меньшего количества масла при жарке. Это поможет сохранить больше питательных веществ в продуктах и снизить потребление ненужных жиров.</p>
+                <p>Обменивайтесь здоровыми рецептами и опытом с друзьями, семьей или в онлайн сообществах. Это поможет вам получить новые идеи для приготовления полезных блюд и вдохновит на эксперименты с новыми продуктами и рецептами.</p>
+            </div>
+
+            <div id="vitamin-combinations" class="content">
+                <h3>Рекомендации по Оптимальным Комбинациям Витаминов</h3>
+                <p>Информация по оптимальным комбинациям витаминов поможет лучше усваивать питательные вещества. Например, витамин D помогает усваивать кальций, а витамин C увеличивает усвоение железа. Включайте в рацион продукты, которые обеспечивают синергетический эффект для здоровья.</p>
+            </div>
+
+            <div id="weekly-plan" class="content">
+                <h3>План Питания на Неделю</h3>
+                <ul>
+                    <li><strong>Понедельник:</strong> Завтрак: Хлопья с отрубями в маложирном молоке, банан, грейпфрутовый сок. Обед: Сэндвич с тунцом на цельнозерновом хлебе, фруктовый йогурт, яблоко. Ужин: Курица с кешью и овощами, коричневый рис, свежий фруктовый салат. Перекус и напитки: Цельнозерновая лепешка с паштетом, 300 мл маложирного молока.</li>
+                    <li><strong>Вторник:</strong> Завтрак: Мюсли без сахара с маложирным молоком и клубникой. Обед: Картофель с яйцом и кресс-салатом, нектарин, виноград. Ужин: Спагетти с говядиной и вегетарианским болоньезе, салат. Перекус и напитки: Тост с паштетом, банан, 300 мл маложирного молока.</li>
+                    <li><strong>Среда:</strong> Завтрак: Фруктовый салат с йогуртом, овсяные хлопья и отруби. Обед: Сэндвич с авокадо и моццареллой, апельсин. Ужин: Лосось с картофелем и овощами, меренга с ягодами. Перекус и напитки: Семечки подсолнечника, 300 мл маложирного молока.</li>
+                    <li><strong>Четверг:</strong> Завтрак: Бублик с творогом и медом, банан, апельсиновый сок. Обед: Суп с морковью, хлеб, йогурт, орехи, изюм. Ужин: Стейк с печеным картофелем, салат, фруктовый салат. Перекус и напитки: Пита с ветчиной, 300 мл маложирного молока.</li>
+                    <li><strong>Пятница:</strong> Завтрак: Каша с абрикосами и медом, грейпфрутовый сок. Обед: Хумус с овощами, батончик со злаками, йогурт. Ужин: Курица-карри с рисом, виноград. Перекус и напитки: Нектарин, киви, 300 мл маложирного молока.</li>
+                    <li><strong>Суббота:</strong> Завтрак: Бублик с сыром и лососем, апельсиновый сок, яблоко. Обед: Салат "Ницца" с тунцом, батончик со злаками. Ужин: Овощная лазанья, салат. Перекус и напитки: Морковный пирог, киви, 300 мл маложирного молока.</li>
+                    <li><strong>Воскресенье:</strong> Завтрак: Омлет с помидорами, тост с сыром, апельсиновый сок. Обед: Ростбиф с картофельными гренками, булочка, яблоко с кремом. Ужин: Овощной суп, рулет, абрикос или нектарин. Перекус и напитки: Тыквенные семечки, 300 мл маложирного молока.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div class="container" id="routine">
+        <section>
+            <h2>Распорядок Дня для Здорового Образа Жизни</h2>
+            <p>Чтобы поддерживать здоровый образ жизни, важно не только правильно питаться, но и соблюдать распорядок дня.
+                Утренние упражнения, регулярные приемы пищи, достаточный сон и время для отдыха помогут поддерживать
+                иммунитет и чувствовать себя лучше.</p>
+        </section>
+    </div>
+
+    <div class="container" id="recommendations">
+        <section>
+            <h2>Рекомендации по Поддержанию Иммунитета</h2>
+            <p>Регулярное употребление витаминов, физических упражнений и сбалансированное питание помогут поддерживать
+                иммунитет на высоком уровне. Консультации с врачом перед приемом добавок также играют важную роль.</p>
+            <p>Дополнительные рекомендации можно найти на <a href="https://delomedika.ru/stati/10-samykh-effektivnykh-sposobov-povysit-immunitet/" target="_blank">сайте</a>. Там вы можете ознакомиться с десятью самыми эффективными способами повышения иммунитета.</p>
+        </section>
+    </div>
+
+    
+
+    <script>
+        function showContent(id) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+
+        </section>
+    </div>
+
+    <script>
+        function calculateWaterIntake() {
+            const weight = document.getElementById('weight').value;
+            const age = document.getElementById('age').value;
+            const activity = document.getElementById('activity').value;
+
+            if (!weight || !age) {
+                document.getElementById('water-intake-result').innerText = 'Пожалуйста, заполните все поля.';
+                return;
+            }
+
+            let baseWaterIntake = weight * 0.03; // 30 мл на 1 кг веса
+            let activityMultiplier = parseFloat(activity);
+            let totalWaterIntake = baseWaterIntake * activityMultiplier;
+
+            document.getElementById('water-intake-result').innerText = `Вам нужно пить около ${totalWaterIntake.toFixed(1)} литров воды в день.`;
+        }
+    </script>
+
+<script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const faders = document.querySelectorAll('.fade-in');
+
+            const appearOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const appearOnScroll = new IntersectionObserver(function (
+                entries,
+                appearOnScroll
+            ) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            },
+                appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+<div class="container" id="calculators">
+        <section class="calculator-section">
+            <h2>Полезные Калькуляторы</h2>
+            <div class="tabs">
+                <button onclick="showContent('water-intake-calculator')">Калькулятор Воды</button>
+                <button onclick="showContent('sleep-calculator')">Калькулятор Сна</button>
+            </div>
+            <div id="water-intake-calculator" class="content">
+                <section class="calculator-container">
+                    <h3>Калькулятор Воды</h3>
+                    <p>Введите свои данные, чтобы узнать рекомендуемое количество потребляемой воды в день.</p>
+                    <input type="number" id="weight" placeholder="Вес (кг)" min="1">
+                    <input type="number" id="age" placeholder="Возраст (лет)" min="1">
+                    <select id="activity">
+                        <option value="1.2">Минимальная активность</option>
+                        <option value="1.375">Легкая активность</option>
+                        <option value="1.55">Средняя активность</option>
+                        <option value="1.725">Высокая активность</option>
+                        <option value="1.9">Очень высокая активность</option>
+                    </select>
+                    <button onclick="calculateWaterIntake()">Рассчитать</button>
+                    <div id="water-intake-result"></div>
+                    <h3>Дополнительный Калькулятор Воды</h3>
+                    <iframe src="https://www.shoro.kg/ru/health/calculator/" width="100%" height="500" style="border:none;"></iframe>
+                </section>
+            </div>
+            <div id="sleep-calculator" class="content">
+                <section class="calculator-container">
+                    <h3>Калькулятор Сна</h3>
+                    <p>Введите время, в которое вам нужно проснуться, чтобы узнать, когда лучше лечь спать для полноценного отдыха.</p>
+                    <input type="time" id="wake-up-time" placeholder="Время пробуждения">
+                    <button onclick="calculateSleepTime()">Рассчитать время для сна</button>
+                    <div id="sleep-time-result"></div>
+                    <h3>Дополнительный Калькулятор Сна</h3>
+                    <iframe src="https://lifehacker.ru/special/sleepycalc/" width="100%" height="500" style="border:none;"></iframe>
+                </section>
+            </div>
+        </section>
+    </div>
+<footer>
+        <p>Этот сайт был разработан Яном Вишневским, 2024. Все права защищены.</p>
+    </footer>
+</body>
+
+</html>
+
+

@@ -1,0 +1,185 @@
+/* Основные стили для сайта "Витамины и Здоровый Образ Жизни" */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #1f1f1f;
+    color: #ffffff;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #333;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+nav a {
+    color: #e0e0e0;
+    margin: 0 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffab40;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+}
+
+.vitamin-section h2 {
+    color: #66bb6a;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.tabs button {
+    background: #333;
+    border: none;
+    color: #e0e0e0;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.tabs button:hover {
+    background: #555;
+    transform: scale(1.05);
+}
+
+.content {
+    display: none;
+    padding: 1.5rem;
+    background: #2e2e2e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.content.active {
+    display: block;
+}
+
+h3 {
+    color: #ffab40;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: #1f1f1f;
+    color: #ffffff;
+    margin-top: 3rem;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.4);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #333;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #e0e0e0;
+    margin: 4px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        position: relative;
+    }
+
+    .hamburger {
+        display: flex;
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 3rem;
+        right: 1rem;
+        width: 200px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links a {
+        padding: 1rem;
+        border-bottom: 1px solid #444;
+        color: #e0e0e0;
+        text-align: left;
+    }
+
+    .nav-links a:hover {
+        background: #444;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
